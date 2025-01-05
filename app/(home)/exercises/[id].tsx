@@ -235,7 +235,7 @@ const ExerciseDetails = () => {
         style={{
           position: "absolute",
           width: "100%",
-          paddingBottom: Spacing.padding.xxl,
+          paddingBottom: Spacing.padding.lg,
           paddingTop: Spacing.padding.sm,
           bottom: 0,
           paddingHorizontal: Spacing.padding.base,
