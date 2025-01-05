@@ -3,8 +3,8 @@ import React from "react";
 
 const Layout = () => {
   return (
-    <Stack initialRouteName="SplashScreen">
-      <Stack.Screen name="SplashScreen" options={{ headerShown: false, animation: "fade" }} />
+    <Stack>
+      <Stack.Screen name="profile" options={{ title: "Profile", animation: "fade" }} />
     </Stack>
   );
 };

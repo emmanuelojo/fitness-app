@@ -1,5 +1,5 @@
 import { Image, ScrollView, StyleSheet, TextInput, View } from "react-native";
-import { useRouter } from "expo-router";
+import { Link, useRouter } from "expo-router";
 import { categories, user, workoutPlans, workouts } from "@/data";
 import Colors from "@/constants/Colors";
 import Font from "@/constants/Font";
@@ -41,14 +41,17 @@ export default function HomeScreen() {
               alignItems: "center",
             }}
           >
-            <Image
-              source={user.profile}
-              style={{
-                height: 50,
-                width: 50,
-                borderRadius: 25,
-              }}
-            />
+            <Link href="/(home)/profile">
+              <Image
+                source={user.profile}
+                style={{
+                  height: 50,
+                  width: 50,
+                  borderRadius: 25,
+                  cursor: "pointer",
+                }}
+              />
+            </Link>
             <View
               style={{
                 marginLeft: Spacing.margin.base,

@@ -30,9 +30,7 @@ export default function RootLayout() {
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false, animation: "fade" }} />
         <Stack.Screen name="(home)" options={{ headerShown: false, animation: "fade" }} />
-        {/* <Stack.Screen name="(home)/exercises/id" options={{ headerShown: false, animation: "fade" }} /> */}
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />

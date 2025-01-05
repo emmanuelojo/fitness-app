@@ -7,7 +7,7 @@ import Font from "@/constants/Font";
 import { Ionicons } from "@expo/vector-icons";
 // import StarRating from 'react-native-star-rating-widget';
 // import StarRating from "react-native-star-rating-widget";
-import { StarRatingDisplay } from "react-native-star-rating-widget";
+// import { StarRatingDisplay } from "react-native-star-rating-widget";
 import { useState } from "react";
 
 interface Props {
@@ -71,9 +71,16 @@ const WorkOutPlan = ({ plan }: Props) => {
           }}
         >
           {/* <Rating rating={plan.rating} max={5} iconWidth={20} iconHeight={20} /> */}
-          <StarRatingDisplay rating={plan.rating} />
+          {/* <StarRatingDisplay rating={plan.rating} /> */}
           {/* <StarRating rating={rating} onChange={setRating} /> */}
 
+          <View style={{ flexDirection: "row" }}>
+            <Ionicons name="star" size={16} color="yellow" />
+            <Ionicons name="star" size={16} color="yellow" />
+            <Ionicons name="star" size={16} color="yellow" />
+            <Ionicons name="star" size={16} color="yellow" />
+            <Ionicons name="star" size={16} color="yellow" />
+          </View>
           <AppText
             style={{
               marginLeft: Spacing.margin.sm,
