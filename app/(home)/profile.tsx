@@ -1,4 +1,4 @@
-import { Pressable, ScrollView, StyleSheet, View } from "react-native";
+import { GestureResponderEvent, Pressable, ScrollView, StyleSheet, View } from "react-native";
 import { useRouter } from "expo-router";
 import * as ImagePicker from "expo-image-picker";
 import { Ionicons } from "@expo/vector-icons";
@@ -39,8 +39,17 @@ const profile = () => {
     setIsModalVisible(true);
   };
 
-  const onModalClose = () => {
-    setIsModalVisible(false);
+  const onModalClose = (e?: GestureResponderEvent) => {
+    console.log("target: ", e?.target);
+    console.log("curr target: ", e?.currentTarget);
+
+    if (e?.target === e?.currentTarget) {
+      console.log("close modal");
+      setIsModalVisible(false);
+    } else {
+      console.log("just close modal");
+      setIsModalVisible(false);
+    }
   };
 
   return (
