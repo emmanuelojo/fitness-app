@@ -14,7 +14,7 @@ const AppText = ({ children, style, ...OtherProps }: Props) => {
     <Text
       style={[
         {
-          color: Colors.text,
+          color: Colors.primary,
           fontFamily: Font["poppins-regular"],
           fontSize: FontSize.base,
         },

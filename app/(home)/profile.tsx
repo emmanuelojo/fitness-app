@@ -1,4 +1,4 @@
-import { GestureResponderEvent, Pressable, ScrollView, StyleSheet, View } from "react-native";
+import { GestureResponderEvent, Pressable, ScrollView, StyleSheet, TextInput, View, Dimensions } from "react-native";
 import { useRouter } from "expo-router";
 import * as ImagePicker from "expo-image-picker";
 import { Ionicons } from "@expo/vector-icons";
@@ -10,11 +10,14 @@ import Spacing from "@/constants/Spacing";
 import AccountProfile from "@/components/profile/AccountProfile";
 import BottomModal from "@/components/modals/BottomModal";
 import Button from "@/components/Button";
+import Colors from "@/constants/Colors";
+import FontSize from "@/constants/FontSize";
 
 const PlaceholderImage = require("@/assets/images/placeholder.png");
 
 const profile = () => {
   const router = useRouter();
+  const { height } = Dimensions.get("window");
   const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined);
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
@@ -57,6 +60,8 @@ const profile = () => {
       <ScrollView
         style={{
           paddingHorizontal: Spacing.padding.base,
+          borderColor: "blue",
+          borderWidth: 2,
         }}
       >
         <View
@@ -76,18 +81,121 @@ const profile = () => {
           />
 
           <View style={{ flexDirection: "row", alignContent: "center" }}>
-            <AppText>Profile </AppText>
+            <AppText style={{ color: "black" }}>Profile </AppText>
           </View>
         </View>
 
-        <View style={{ marginTop: 30 }}>
+        <View
+          style={{
+            marginTop: 30,
+            height: height / 2.5,
+            flex: 1,
+            flexDirection: "column",
+            justifyContent: "space-between",
+            gap: 30,
+            borderColor: "yellow",
+            borderWidth: 2,
+          }}
+        >
           <View style={{ flexDirection: "column", gap: 8 }}>
             <AccountProfile imgSource={PlaceholderImage} selectedImage={selectedImage} />
             <Pressable onPress={handleOpenImageModal}>
-              <AppText style={{ textAlign: "center", fontSize: 12, textDecorationLine: "underline" }}>
+              <AppText style={{ color: "black", textAlign: "center", fontSize: 12, textDecorationLine: "underline" }}>
                 Tap to edit
               </AppText>
             </Pressable>
+          </View>
+
+          <View
+            style={{
+              height: "100%",
+              flex: 1,
+              flexDirection: "column",
+              justifyContent: "space-between",
+              gap: 30,
+              borderColor: "red",
+              borderWidth: 2,
+            }}
+          >
+            <View style={{ flexDirection: "column", gap: 16 }}>
+              <View style={{ flexDirection: "column", gap: 4 }}>
+                <AppText style={{ color: "black" }}>First name</AppText>
+                <TextInput
+                  placeholder="John"
+                  placeholderTextColor="#DDDDDD"
+                  style={{
+                    fontSize: FontSize.base,
+                    width: "100%",
+                    outline: "none",
+                    backgroundColor: "transpareent",
+                    paddingVertical: Spacing.padding.sm,
+                    paddingHorizontal: Spacing.padding.base,
+                    borderColor: "#DDDDDD",
+                    borderWidth: 1,
+                    borderRadius: Spacing.borderRadius.base,
+                    color: "#000000",
+                  }}
+                />
+              </View>
+              <View style={{ flexDirection: "column", gap: 4 }}>
+                <AppText style={{ color: "black" }}>Last name</AppText>
+                <TextInput
+                  placeholder="Doe"
+                  placeholderTextColor="#DDDDDD"
+                  style={{
+                    fontSize: FontSize.base,
+                    width: "100%",
+                    outline: "none",
+                    backgroundColor: "transpareent",
+                    paddingVertical: Spacing.padding.sm,
+                    paddingHorizontal: Spacing.padding.base,
+                    borderColor: "#DDDDDD",
+                    borderWidth: 1,
+                    borderRadius: Spacing.borderRadius.base,
+                    color: "#000000",
+                  }}
+                />
+              </View>
+              <View style={{ flexDirection: "column", gap: 4 }}>
+                <AppText style={{ color: "black" }}>Email address</AppText>
+                <TextInput
+                  placeholder="mail@doe.com"
+                  placeholderTextColor="#DDDDDD"
+                  style={{
+                    fontSize: FontSize.base,
+                    width: "100%",
+                    outline: "none",
+                    backgroundColor: "transpareent",
+                    paddingVertical: Spacing.padding.sm,
+                    paddingHorizontal: Spacing.padding.base,
+                    borderColor: "#DDDDDD",
+                    borderWidth: 1,
+                    borderRadius: Spacing.borderRadius.base,
+                    color: "#000000",
+                  }}
+                />
+              </View>
+              <View style={{ flexDirection: "column", gap: 4 }}>
+                <AppText style={{ color: "black" }}>Phone number</AppText>
+                <TextInput
+                  placeholderTextColor="#DDDDDD"
+                  style={{
+                    fontSize: FontSize.base,
+                    width: "100%",
+                    outline: "none",
+                    backgroundColor: "transpareent",
+                    paddingVertical: Spacing.padding.sm,
+                    paddingHorizontal: Spacing.padding.base,
+                    borderColor: "#DDDDDD",
+                    borderWidth: 1,
+                    borderRadius: Spacing.borderRadius.base,
+                    color: "#000000",
+                  }}
+                />
+              </View>
+            </View>
+
+            <Button style={{ alignContent: "center" }}>Save change</Button>
           </View>
         </View>
       </ScrollView>

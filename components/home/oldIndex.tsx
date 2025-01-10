@@ -13,8 +13,6 @@ import CategoryList from "@/components/CategoryList";
 import SectionHeader from "@/components/SectionHeader";
 import Workout from "@/components/Workout";
 import WorkOutPlan from "@/components/WorkOutPlan";
-import SearchField from "@/components/home/SearchField";
-import PopularWorkout from "@/components/home/PopularWorkout";
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -28,7 +26,6 @@ export default function HomeScreen() {
       <ScrollView
         style={{
           paddingHorizontal: Spacing.padding.base,
-          paddingVertical: Spacing.padding.base,
         }}
       >
         <View
@@ -44,18 +41,27 @@ export default function HomeScreen() {
               alignItems: "center",
             }}
           >
+            <Link href="/(home)/profile">
+              <Image
+                source={user.profile}
+                style={{
+                  height: 50,
+                  width: 50,
+                  borderRadius: 25,
+                  cursor: "pointer",
+                }}
+              />
+            </Link>
             <View
               style={{
                 marginLeft: Spacing.margin.base,
               }}
             >
-              <AppText>Good morning, </AppText>
+              <AppText>Hello, Welcome</AppText>
               <AppText
                 style={{
                   fontFamily: Font["poppins-semiBold"],
                   textTransform: "capitalize",
-                  fontSize: 28,
-                  fontWeight: 700,
                 }}
               >
                 {user.name}
@@ -65,23 +71,38 @@ export default function HomeScreen() {
           <IconButton name="notifications" color="black" />
         </View>
 
-        <SearchField />
-
-        <SectionHeader title="Popular Workouts" />
-
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          decelerationRate="fast"
-          pagingEnabled
-          snapToInterval={270 + Spacing.margin.lg}
-          style={{ marginBottom: 20 }}
+        <View
+          style={{
+            backgroundColor: Colors.primary,
+            paddingVertical: Spacing.padding.sm,
+            paddingHorizontal: Spacing.padding.base,
+            borderRadius: Spacing.borderRadius.base,
+            marginVertical: Spacing.margin.xl,
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
         >
-          {workouts.map((workout) => (
-            <PopularWorkout onPress={viewDetails} workout={workout} key={workout.id} />
-          ))}
-        </ScrollView>
-
+          <Ionicons name="search-outline" size={24} color={Colors.text} />
+          <TextInput
+            placeholder="Search Workouts.."
+            placeholderTextColor={Colors.text}
+            style={{
+              fontSize: FontSize.base,
+              width: "80%",
+              outline: "none",
+            }}
+          />
+          <IconButton
+            name="options-outline"
+            style={{
+              backgroundColor: Colors.accent,
+            }}
+            color={Colors.black}
+          />
+        </View>
+        <CategoryList />
+        <SectionHeader title="Featured Workouts" />
         <ScrollView
           horizontal
           showsHorizontalScrollIndicator={false}

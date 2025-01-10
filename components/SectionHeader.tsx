@@ -19,12 +19,12 @@ const SectionHeader = ({ title }: Props) => {
         marginVertical: Spacing.margin.lg,
       }}
     >
-      <AppText>{title}</AppText>
+      <AppText style={{ color: "black" }}>{title}</AppText>
       <TouchableOpacity>
         <AppText
           style={{
             fontSize: FontSize.sm,
-            color: Colors.accent,
+            color: "black",
           }}
         >
           See all

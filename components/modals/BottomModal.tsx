@@ -18,7 +18,8 @@ export default function BottomModal({ isVisible, children, onClose }: Props) {
 
 const styles = StyleSheet.create({
   modalContent: {
-    height: "25%",
+    height: "auto",
+    minHeight: "25%",
     width: "100%",
     backgroundColor: "#25292e",
     borderTopRightRadius: 18,

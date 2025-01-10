@@ -1,16 +1,47 @@
-import { StyleSheet, View, Image, Platform, SafeAreaView, Text, ScrollView, Pressable } from "react-native";
+import {
+  StyleSheet,
+  View,
+  Image,
+  Platform,
+  SafeAreaView,
+  Text,
+  ScrollView,
+  Pressable,
+  GestureResponderEvent,
+} from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
+import { useState } from "react";
 import Screen from "@/components/Screen";
 import Spacing from "@/constants/Spacing";
 import AppText from "@/components/AppText";
 import Colors from "@/constants/Colors";
+import BottomModal from "@/components/modals/BottomModal";
+import Logout from "@/components/auth/Logout";
 
 export default function TabTwoScreen() {
   const router = useRouter();
+  const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
   const goToProfile = () => {
     router.push("/(home)/profile");
+  };
+
+  const onLogoutClicked = () => {
+    setIsModalVisible(true);
+  };
+
+  const onModalClose = (e?: GestureResponderEvent) => {
+    if (e?.target === e?.currentTarget) {
+      setIsModalVisible(false);
+    } else {
+      setIsModalVisible(false);
+    }
+  };
+
+  const handleLogout = () => {
+    setIsModalVisible(false);
+    router.push("/welcome");
   };
 
   return (
@@ -75,7 +106,7 @@ export default function TabTwoScreen() {
             </Pressable>
           </View>
 
-          <Pressable>
+          <Pressable onPress={onLogoutClicked}>
             <View style={styles.card}>
               <View style={styles.wrapper}>
                 <View style={styles.iconContainer}>
@@ -91,6 +122,10 @@ export default function TabTwoScreen() {
           </Pressable>
         </View>
       </ScrollView>
+
+      <BottomModal isVisible={isModalVisible} onClose={onModalClose}>
+        <Logout onClose={onModalClose} logout={handleLogout} />
+      </BottomModal>
     </Screen>
   );
 }

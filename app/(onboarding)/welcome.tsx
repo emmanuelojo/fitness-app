@@ -1,14 +1,18 @@
-import { StyleSheet, Image, View, Text, TouchableOpacity } from "react-native";
+import { StyleSheet, Image, View, Text, TouchableOpacity, Pressable } from "react-native";
 import Screen from "@/components/Screen";
 import Spacing from "@/constants/Spacing";
 import FontSize from "@/constants/FontSize";
 import Font from "@/constants/Font";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 
 const WelcomeImage = require("@/assets/images/onboarding/1.png");
 const OverlayImage = require("@/assets/images/onboarding/overlay.png");
 
 const welcome = () => {
+  const handleGetStarted = () => {
+    router.push("/");
+  };
+
   return (
     <Screen>
       <View style={styles.container}>
@@ -22,20 +26,23 @@ const welcome = () => {
             <Text style={styles.description}>There is no instant way to healthy life</Text>
           </View>
 
-          <Link href="/">
-            <TouchableOpacity style={styles.button}>
+          {/* <Link href="/"> */}
+          <Pressable onPress={handleGetStarted}>
+            <View style={styles.button}>
               <Text
                 style={[
                   {
                     fontSize: FontSize.base,
                     fontFamily: Font["poppins-regular"],
+                    color: "white",
                   },
                 ]}
               >
                 Get started
               </Text>
-            </TouchableOpacity>
-          </Link>
+            </View>
+          </Pressable>
+          {/* </Link> */}
         </View>
       </View>
     </Screen>
@@ -102,7 +109,6 @@ const styles = StyleSheet.create({
     height: 56,
     backgroundColor: "#192126",
     borderRadius: 32,
-    color: "#ffffff",
     paddingHorizontal: Spacing.padding.xl,
     paddingVertical: Spacing.padding.base,
     alignItems: "center",
