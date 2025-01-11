@@ -1,6 +1,6 @@
 import { Image, ScrollView, StyleSheet, TextInput, View } from "react-native";
 import { Link, useRouter } from "expo-router";
-import { categories, user, workoutPlans, workouts } from "@/data";
+import { categories, todayPlans, user, workoutPlans, workouts } from "@/data";
 import Colors from "@/constants/Colors";
 import Font from "@/constants/Font";
 import FontSize from "@/constants/FontSize";
@@ -15,6 +15,7 @@ import Workout from "@/components/Workout";
 import WorkOutPlan from "@/components/WorkOutPlan";
 import SearchField from "@/components/home/SearchField";
 import PopularWorkout from "@/components/home/PopularWorkout";
+import TodaysPlan from "@/components/home/TodaysPlan";
 
 export default function HomeScreen() {
   const router = useRouter();
@@ -82,21 +83,18 @@ export default function HomeScreen() {
           ))}
         </ScrollView>
 
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          decelerationRate="fast"
-          pagingEnabled
-          snapToInterval={270 + Spacing.margin.lg}
-        >
-          {workouts.map((workout) => (
-            <Workout onPress={viewDetails} workout={workout} key={workout.id} />
+        <SectionHeader title="Today's Plan" />
+
+        <View style={{ flexDirection: "column", gap: 20 }}>
+          {todayPlans.map((plan) => (
+            <TodaysPlan onPress={viewDetails} plan={plan} key={plan.id} />
           ))}
-        </ScrollView>
-        <SectionHeader title="Trending Plans" />
+        </View>
+
+        {/* <SectionHeader title="Trending Plans" />
         {workoutPlans.map((plan) => (
           <WorkOutPlan plan={plan} key={plan.id} />
-        ))}
+        ))} */}
       </ScrollView>
     </Screen>
   );

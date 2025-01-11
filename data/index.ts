@@ -242,3 +242,64 @@ export const workoutPlans: Plan[] = [
       "In velit culpa dolor in amet amet pariatur consectetur enim ea. Minim in labore nostrud labore officia labore velit proident labore aliquip ipsum ipsum ullamco aliquip. Magna anim reprehenderit nisi irure pariatur non. Ipsum minim ad ipsum cillum consequat. Ipsum aliquip ad nulla laborum reprehenderit esse commodo non.",
   },
 ];
+
+export interface TodaysPlan extends Plan {
+  level: number;
+  progress: number;
+}
+
+// list of today's plan
+export const todayPlans: TodaysPlan[] = [
+  {
+    id: 1,
+    name: "Push up",
+    duration: "8 weeks",
+    location: "Home",
+    image: require("@/assets/images/todays-plan/tp-1.jpg"),
+    rating: 5,
+    minutes: 52,
+    calories: 350,
+    description: "100 push ups a day",
+    level: 2,
+    progress: 50,
+  },
+  {
+    id: 2,
+    name: "Sit up",
+    duration: "8 weeks",
+    location: "Home",
+    image: require("@/assets/images/todays-plan/tp-2.jpg"),
+    rating: 5,
+    minutes: 52,
+    calories: 350,
+    description: "20 sit ups a day",
+    level: 1,
+    progress: 20,
+  },
+  {
+    id: 3,
+    name: "Knee Push up",
+    duration: "8 weeks",
+    location: "Home",
+    image: require("@/assets/images/todays-plan/tp-3.jpg"),
+    rating: 5,
+    minutes: 52,
+    calories: 350,
+    description: "50 knee push ups a day",
+    level: 3,
+    progress: 80,
+  },
+  {
+    id: 4,
+    name: "Leg muscle strength",
+    duration: "8 weeks",
+    location: "Home",
+    image: require("@/assets/images/workouts/photo-1546483875-ad9014c88eba.jpeg"),
+    rating: 5,
+    minutes: 52,
+    calories: 350,
+    description: "In velit cult nisim consequat.",
+    level: 2,
+    progress: 45,
+  },
+];
