@@ -5,12 +5,15 @@ import FontSize from "../constants/FontSize";
 import Spacing from "../constants/Spacing";
 import AppText from "./AppText";
 import Colors from "../constants/Colors";
+import { Link } from "expo-router";
 
 interface Props {
   title?: string;
+  link?: string;
+  showSeeAll?: boolean;
 }
 
-const SectionHeader = ({ title }: Props) => {
+const SectionHeader = ({ title, link, showSeeAll = true }: Props) => {
   return (
     <View
       style={{
@@ -20,16 +23,20 @@ const SectionHeader = ({ title }: Props) => {
       }}
     >
       <AppText style={{ color: "black" }}>{title}</AppText>
-      <TouchableOpacity>
-        <AppText
-          style={{
-            fontSize: FontSize.sm,
-            color: "black",
-          }}
-        >
-          See all
-        </AppText>
-      </TouchableOpacity>
+      {showSeeAll && (
+        <TouchableOpacity>
+          {/* <Link href={link}> */}
+          <AppText
+            style={{
+              fontSize: FontSize.sm,
+              color: "black",
+            }}
+          >
+            See all
+          </AppText>
+          {/* </Link> */}
+        </TouchableOpacity>
+      )}
     </View>
   );
 };

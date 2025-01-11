@@ -1,7 +1,7 @@
 import { View, StyleSheet, Pressable } from "react-native";
 import AppText from "../AppText";
 import Button from "../Button";
-import LogoutIcon from "@/assets/icons/LogoutIcon";
+import { LogoutBigIcon } from "@/assets/icons/LogoutBigIcon";
 
 interface Props {
   onClose: () => void;
@@ -12,7 +12,7 @@ const Logout = ({ onClose, logout }: Props) => {
   return (
     <View style={styles.container}>
       <View style={{ width: "100%", flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
-        <LogoutIcon outerColour="#ffffff" />
+        <LogoutBigIcon outerColour="#ffffff" />
       </View>
 
       <View style={{ width: 220, flexDirection: "column", gap: 4 }}>

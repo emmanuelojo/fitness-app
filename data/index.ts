@@ -303,3 +303,43 @@ export const todayPlans: TodaysPlan[] = [
     progress: 45,
   },
 ];
+
+export interface BestForYou {
+  id: number;
+  name: string;
+  duration: string;
+  image: ImageSourcePropType;
+  level: string;
+}
+
+// list of best for you
+export const bestForYou: BestForYou[] = [
+  {
+    id: 1,
+    name: "Belly fat burner",
+    duration: "10 mins",
+    image: require("@/assets/images/best-for-you/bfu-1.jpg"),
+    level: "Beginner",
+  },
+  {
+    id: 2,
+    name: "Lose fat",
+    duration: "10 mins",
+    image: require("@/assets/images/best-for-you/bfu-2.jpg"),
+    level: "Beginner",
+  },
+  {
+    id: 3,
+    name: "Plank",
+    duration: "5 mins",
+    image: require("@/assets/images/best-for-you/bfu-3.jpg"),
+    level: "Beginner",
+  },
+  {
+    id: 4,
+    name: "Build Chest",
+    duration: "30 mins",
+    image: require("@/assets/images/best-for-you/bfu-4.jpg"),
+    level: "Beginner",
+  },
+];

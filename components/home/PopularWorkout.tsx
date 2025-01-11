@@ -32,7 +32,7 @@ const PopularWorkout = ({ workout, onPress }: Props) => {
       }}
     >
       <ImageBackground
-        source={require("@/assets/images/popular-workouts/pw-1.png")}
+        source={require("@/assets/images/popular-workouts/pw-1.jpg")}
         style={{ width: 270, height: 174, flex: 1, paddingHorizontal: 20, paddingVertical: 20, borderRadius: 20 }}
       >
         <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>

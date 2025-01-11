@@ -4,7 +4,7 @@ interface Props {
   size?: number;
 }
 
-export function LogoutIcon({ outerColour = "#141B34", innerColour = "#0BBC47", size = 67 }: Props) {
+export function LogoutBigIcon({ outerColour = "#141B34", innerColour = "#0BBC47", size = 67 }: Props) {
   return (
     <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} fill="none" xmlns="http://www.w3.org/2000/svg">
       <path

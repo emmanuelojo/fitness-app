@@ -26,11 +26,18 @@
 // };
 
 const white = "#FFFFFF";
-const gray = "#504f4f";
+const gray = "#8B8F92"; //  "#504f4f";
 const black = "#000000";
 const dark = "#192126"; // "#1F212C";
-const green = "#ADF547";
+const green = "#BBF246"; // "#ADF547";
 const yellow = "#F2E205";
+
+const gray2 = "#5E6468";
+const gray3 = "#384046";
+const purple = "#A48AED";
+const red = "#ED4747";
+const gold = "#FCC46F";
+const blue = "#95CCE3";
 
 export default {
   primary: dark,
@@ -41,4 +48,11 @@ export default {
   yellow,
   border: gray,
   black,
+  gray2,
+  gray3,
+  purple,
+  red,
+  gold,
+  blue,
+  green,
 };

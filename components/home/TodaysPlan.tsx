@@ -47,13 +47,14 @@ const TodaysPlan = ({ plan, onPress }: Props) => {
           <PlanLevel level={plan.level} />
         </View>
 
-        <View style={{ flexDirection: "column", gap: 14 }}>
+        <View style={{ flex: 1, flexDirection: "column", gap: 14, paddingRight: 20 }}>
           <View>
             <AppText style={{ textTransform: "capitalize" }}>{plan.name}</AppText>
 
             <AppText style={{ color: "rgba(25,33,38,.5)", fontSize: 13 }}>{plan.description}</AppText>
           </View>
 
+          {/* percent={plan.progress} */}
           <ProgressBar percent={plan.progress} />
         </View>
       </View>

@@ -6,7 +6,7 @@ interface Props {
 }
 
 const ProgressBar = ({ percent }: Props) => {
-  const progressWidth = (percent / 100) * 100;
+  const progressWidth = Math.min(Math.max(percent, 0), 100);
 
   return (
     <View
@@ -22,7 +22,7 @@ const ProgressBar = ({ percent }: Props) => {
       {progressWidth > 0 && (
         <View
           style={{
-            width: progressWidth,
+            width: `${progressWidth}%`,
             height: "97%",
             flexDirection: "row",
             justifyContent: "center",
