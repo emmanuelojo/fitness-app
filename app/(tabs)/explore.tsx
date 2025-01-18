@@ -1,7 +1,7 @@
 import { ImageBackground, ScrollView, StyleSheet, TextInput, View } from "react-native";
 import { Link, useRouter } from "expo-router";
 import Screen from "@/components/Screen";
-import { bestForYou, categories, todayPlans, user, workoutPlans, workouts } from "@/data";
+import { bestForYou, categories, challenges, todayPlans, user, warmUps, workoutPlans, workouts } from "@/data";
 import Colors from "@/constants/Colors";
 import Font from "@/constants/Font";
 import FontSize from "@/constants/FontSize";
@@ -11,6 +11,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { Ionicons } from "@expo/vector-icons";
 import SectionHeader from "@/components/SectionHeader";
 import BestForYou from "@/components/explore/BestForYou";
+import ChallengeCard from "@/components/explore/ChallengeCard";
 
 const explore = () => {
   return (
@@ -61,6 +62,40 @@ const explore = () => {
           >
             {bestForYou.map((workout) => (
               <BestForYou workout={workout} key={workout.id} />
+            ))}
+          </ScrollView>
+        </View>
+
+        <View>
+          <SectionHeader title="Challenge" showSeeAll={false} />
+
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            decelerationRate="fast"
+            pagingEnabled
+            snapToInterval={110 + Spacing.margin.lg}
+            style={{ marginBottom: 20 }}
+          >
+            {challenges.map((challenge) => (
+              <ChallengeCard challenge={challenge} key={challenge.id} />
+            ))}
+          </ScrollView>
+        </View>
+
+        <View>
+          <SectionHeader title="Fast Warmups" showSeeAll={false} />
+
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            decelerationRate="fast"
+            pagingEnabled
+            snapToInterval={110 + Spacing.margin.lg}
+            style={{ marginBottom: 20 }}
+          >
+            {warmUps.map((warmup) => (
+              <BestForYou workout={warmup} key={warmup.id} />
             ))}
           </ScrollView>
         </View>

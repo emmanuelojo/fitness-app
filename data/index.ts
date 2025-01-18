@@ -343,3 +343,59 @@ export const bestForYou: BestForYou[] = [
     level: "Beginner",
   },
 ];
+
+export interface Challenge {
+  id: number;
+  name: string;
+  bgColour: string;
+  textColour: string;
+  // icon: React.ReactNode;
+  // icon: any
+  image: ImageSourcePropType;
+}
+
+// list of challenges
+export const challenges: Challenge[] = [
+  {
+    id: 1,
+    name: "Plank Challenge",
+    bgColour: "#BBF246",
+    textColour: "#192126",
+    // icon: FireBigIcon,
+    image: require("@/assets/images/challenges/plank.png"),
+  },
+  {
+    id: 2,
+    name: "Sprint Challenge",
+    bgColour: "#192126",
+    textColour: "#FFFFFF",
+    // icon: FireBigIcon,
+    image: require("@/assets/images/challenges/sprint.png"),
+  },
+  {
+    id: 3,
+    name: "Squat Challenge",
+    bgColour: "#FFFFFF",
+    textColour: "#192126",
+    // icon: FireBigIcon,
+    image: require("@/assets/images/challenges/squat.png"),
+  },
+];
+
+// list of warm ups
+export const warmUps: BestForYou[] = [
+  {
+    id: 1,
+    name: "Leg exercises",
+    duration: "10 mins",
+    image: require("@/assets/images/warm-ups/legs.jpg"),
+    level: "Beginner",
+  },
+  {
+    id: 2,
+    name: "Backwards lunges",
+    duration: "5 mins",
+    image: require("@/assets/images/warm-ups/lunges.jpg"),
+    level: "Beginner",
+  },
+];

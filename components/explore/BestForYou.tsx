@@ -37,10 +37,10 @@ const BestForYou = ({ workout }: Props) => {
         <Image source={workout.image} style={{ width: 72, height: 72, borderRadius: 12, objectFit: "cover" }} />
 
         <View style={{ flexDirection: "column", gap: 14, paddingRight: 20 }}>
-          <AppText style={{ fontSize: 14, fontWeight: 600 }}>{workout.name}</AppText>
+          <AppText style={{ maxWidth: 90, fontSize: 11, fontWeight: 600 }}>{workout.name}</AppText>
 
           <View style={{ flexDirection: "column", gap: 8 }}>
-            <View style={styles.wrapper}>
+            <View style={styles.durationWrapper}>
               <AppText style={styles.wrapperText}>{workout.duration}</AppText>
             </View>
             <View style={styles.wrapper}>
@@ -55,7 +55,7 @@ const BestForYou = ({ workout }: Props) => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    width: "auto",
+    width: 60,
     backgroundColor: "#F1F1F1",
     paddingVertical: 2,
     paddingHorizontal: 6,
@@ -64,6 +64,13 @@ const styles = StyleSheet.create({
   wrapperText: {
     fontSize: 12,
     color: "rgba(25,33,38,.7)",
+  },
+  durationWrapper: {
+    width: 55,
+    backgroundColor: "#F1F1F1",
+    paddingVertical: 2,
+    paddingHorizontal: 6,
+    borderRadius: 3,
   },
 });
 export default BestForYou;
