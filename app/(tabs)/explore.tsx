@@ -1,4 +1,4 @@
-import { ImageBackground, ScrollView, StyleSheet, TextInput, View } from "react-native";
+import { Image, ScrollView, StyleSheet, TextInput, useWindowDimensions, View } from "react-native";
 import { Link, useRouter } from "expo-router";
 import Screen from "@/components/Screen";
 import { bestForYou, categories, challenges, todayPlans, user, warmUps, workoutPlans, workouts } from "@/data";
@@ -14,6 +14,11 @@ import BestForYou from "@/components/explore/BestForYou";
 import ChallengeCard from "@/components/explore/ChallengeCard";
 
 const explore = () => {
+  const dynamicWidth = useWindowDimensions().width;
+
+  const evenIndexedBestForYouItems = bestForYou.filter((_, index) => index % 2 === 0);
+  const oddIndexedBestForYouItems = bestForYou.filter((_, index) => index % 2 !== 0);
+
   return (
     <Screen>
       <ScrollView
@@ -23,31 +28,53 @@ const explore = () => {
           gap: 24,
         }}
       >
-        <ImageBackground
-          source={require("@/assets/images/workouts/home-workout.jpg")}
-          resizeMode="cover"
-          style={{ flex: 1, borderRadius: 23, overflow: "hidden" }}
+        <View
+          style={{
+            position: "relative",
+            marginTop: 40,
+            width: dynamicWidth - Spacing.padding.base * 2,
+            height: 180,
+            flexDirection: "column",
+            justifyContent: "space-between",
+          }}
         >
-          <LinearGradient
+          <Image
+            source={require("@/assets/images/workouts/home-workout.jpg")}
+            style={{ flex: 1, width: "auto", height: "auto", borderRadius: 20, objectFit: "cover" }}
+          ></Image>
+
+          <AppText
             style={{
-              height: 180,
-              flexDirection: "column",
-              justifyContent: "space-between",
-              padding: 26,
+              maxWidth: 210,
+              color: "#ffffff",
+              fontSize: 24,
+              fontWeight: 600,
+              position: "absolute",
+              top: "15%",
+              left: "10%",
+              transform: "translate(-10%,-15%)",
             }}
-            colors={[`rgba(0,0,0,0.1)`, `#000`]}
           >
-            <AppText style={{ maxWidth: 210, color: "#ffffff", fontSize: 24, fontWeight: 600 }}>
-              Best Home Workouts
-            </AppText>
+            Best Home Workouts
+          </AppText>
 
-            <View style={{ flexDirection: "row", gap: 10, alignItems: "center", cursor: "pointer" }}>
-              <AppText style={{ color: Colors.green }}>See more</AppText>
+          <View
+            style={{
+              flexDirection: "row",
+              gap: 10,
+              alignItems: "center",
+              cursor: "pointer",
+              position: "absolute",
+              bottom: "10%",
+              left: "7%",
+              transform: "translate(-10%,-10%)",
+            }}
+          >
+            <AppText style={{ color: Colors.green }}>See more</AppText>
 
-              <Ionicons name="chevron-forward" color={Colors.green} />
-            </View>
-          </LinearGradient>
-        </ImageBackground>
+            <Ionicons name="chevron-forward" color={Colors.green} />
+          </View>
+        </View>
 
         <View>
           <SectionHeader title="Best for you" showSeeAll={false} />
@@ -60,7 +87,19 @@ const explore = () => {
             snapToInterval={270 + Spacing.margin.lg}
             style={{ marginBottom: 20 }}
           >
-            {bestForYou.map((workout) => (
+            {evenIndexedBestForYouItems.map((workout, index) => (
+              <BestForYou workout={workout} key={workout.id} />
+            ))}
+          </ScrollView>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            decelerationRate="fast"
+            pagingEnabled
+            snapToInterval={270 + Spacing.margin.lg}
+            style={{ marginBottom: 20 }}
+          >
+            {oddIndexedBestForYouItems.map((workout) => (
               <BestForYou workout={workout} key={workout.id} />
             ))}
           </ScrollView>

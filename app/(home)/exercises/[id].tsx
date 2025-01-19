@@ -1,4 +1,4 @@
-import { Dimensions, Image, ImageBackground, Platform, ScrollView, StyleSheet, View } from "react-native";
+import { Image, Platform, ScrollView, StyleSheet, useWindowDimensions, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
 import { useState, useEffect } from "react";
 import AppText from "@/components/AppText";
@@ -6,22 +6,22 @@ import IconButton from "@/components/IconButton";
 import Spacing from "@/constants/Spacing";
 import { BlurView } from "expo-blur";
 import Font from "@/constants/Font";
-import Colors from "@/constants/Colors";
-import FontSize from "@/constants/FontSize";
-import { Ionicons } from "@expo/vector-icons";
 import { LinearGradient } from "expo-linear-gradient";
 import Button from "@/components/Button";
 import Screen from "@/components/Screen";
 import { workouts } from "@/data";
 import WorkoutExercise from "@/components/WorkoutExercise";
+import { FireIcon } from "@/assets/icons/FireIcon";
+import Colors from "@/constants/Colors";
+import { ClockIcon } from "@/assets/icons/ClockIcon";
 
 const OverlayImage = require("@/assets/images/onboarding/overlay.png");
 
 const ExerciseDetails = () => {
   const { id } = useLocalSearchParams();
   const router = useRouter();
-  const { width } = Dimensions.get("window");
-  const [dynamicWidth, setDynamicWidth] = useState(width);
+  const windowWidth = useWindowDimensions().width;
+  const [dynamicWidth, setDynamicWidth] = useState(windowWidth);
 
   const workout = workouts.filter((el) => el.id === Number(id))[0];
 
@@ -30,8 +30,8 @@ const ExerciseDetails = () => {
   };
 
   useEffect(() => {
-    setDynamicWidth(width);
-  }, [width]);
+    setDynamicWidth(windowWidth);
+  }, [windowWidth]);
 
   return (
     <Screen>
@@ -88,12 +88,24 @@ const ExerciseDetails = () => {
               transform: "translate(-50%,0%)",
               borderBottomLeftRadius: 20,
               borderBottomRightRadius: 20,
+              opacity: 0.5,
             }}
           />
 
           <BlurView tint="dark" intensity={Platform.OS === "android" ? 100 : 80} style={styles.workoutSummary}>
             <View style={styles.workoutTimeWrapper}>
-              <IconButton name="time" />
+              <View
+                style={{
+                  height: 40,
+                  width: 40,
+                  backgroundColor: Colors.green,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: Spacing.borderRadius.base,
+                }}
+              >
+                <ClockIcon size={20} />
+              </View>
 
               <View>
                 <AppText style={styles.workoutIconTitle}>Time</AppText>
@@ -103,10 +115,19 @@ const ExerciseDetails = () => {
 
             <View style={styles.verticalDivider}></View>
 
-            <AppText style={{ color: "white" }}>{dynamicWidth}</AppText>
-
             <View style={styles.workoutTimeWrapper}>
-              <IconButton name="cloud" />
+              <View
+                style={{
+                  height: 40,
+                  width: 40,
+                  backgroundColor: Colors.green,
+                  alignItems: "center",
+                  justifyContent: "center",
+                  borderRadius: Spacing.borderRadius.base,
+                }}
+              >
+                <FireIcon size={20} />
+              </View>
 
               <View>
                 <AppText style={styles.workoutIconTitle}>Burn</AppText>
@@ -126,12 +147,9 @@ const ExerciseDetails = () => {
               fontFamily: Font["poppins-regular"],
             }}
           >
-            lower body training
+            {workout.name}
           </AppText>
-          <AppText style={{ color: "#FFFFFF50", fontSize: 15 }}>
-            The lower abdomen and hips are the most difficult areas of the body to reduce when we are on a diet. Even
-            so, in this area, especially the legs as a whole, you can reduce weight even if you don't use tools.
-          </AppText>
+          <AppText style={{ color: "#FFFFFF50", fontSize: 15 }}>{workout.description}</AppText>
         </View>
 
         <View style={{ marginTop: 40, flexDirection: "column", gap: 20 }}>

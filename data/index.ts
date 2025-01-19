@@ -103,7 +103,7 @@ export interface Workout {
 export const workouts: Workout[] = [
   {
     id: 1,
-    name: "Leg muscle strength",
+    name: "Lower body training",
     coach: "Dasha Gaivoronski",
     image: require("@/assets/images/workouts/frederik-rosar-uQOBWxjSd-4-unsplash.jpg"),
     exercises,
@@ -139,7 +139,7 @@ export const workouts: Workout[] = [
   },
   {
     id: 4,
-    name: "Leg muscle strength",
+    name: "Arms muscle strength",
     coach: "Dasha Gaivoronski",
     image: require("@/assets/images/workouts/photo-1546483875-ad9014c88eba.jpeg"),
     exercises,
@@ -153,8 +153,7 @@ export const workouts: Workout[] = [
     id: 5,
     name: "Leg muscle strength",
     coach: "Dasha Gaivoronski",
-    // image: require("@/assets/images/workouts/photo-1541534741688-6078c6bfb5c5.jpeg"),
-    image: require("@/assets/images/workouts/photo-1546483875-ad9014c88eba.jpeg"),
+    image: require("@/assets/images/popular-workouts/pw-1.jpg"),
     exercises,
     rating: 5,
     minutes: 52,
@@ -164,7 +163,7 @@ export const workouts: Workout[] = [
   },
   {
     id: 6,
-    name: "Leg muscle strength",
+    name: "Full body strength",
     coach: "Dasha Gaivoronski",
     image: require("@/assets/images/workouts/spencer-davis-0ShTs8iPY28-unsplash.jpeg"),
     exercises,
@@ -176,7 +175,7 @@ export const workouts: Workout[] = [
   },
   {
     id: 7,
-    name: "Leg muscle strength",
+    name: "Glutes",
     coach: "Dasha Gaivoronski",
     image: require("@/assets/images/workouts/victor-freitas-KkYWWpurqbE-unsplash.jpeg"),
     exercises,
@@ -188,7 +187,7 @@ export const workouts: Workout[] = [
   },
   {
     id: 8,
-    name: "Leg muscle strength",
+    name: "Abs and core",
     coach: "Dasha Gaivoronski",
     image: require("@/assets/images/workouts/photo-1434682966726-19ad3a76e143.jpeg"),
     exercises,

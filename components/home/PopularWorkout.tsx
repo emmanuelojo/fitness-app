@@ -36,24 +36,47 @@ const PopularWorkout = ({ workout, onPress }: Props) => {
       }}
     >
       <ImageBackground
-        source={require("@/assets/images/popular-workouts/pw-1.jpg")}
-        style={{ width: 270, height: 174, flex: 1, paddingHorizontal: 20, paddingVertical: 20, borderRadius: 20 }}
+        source={workout.image}
+        style={{
+          width: 270,
+          height: 174,
+          minHeight: 174,
+          flex: 1,
+          paddingHorizontal: 20,
+          paddingVertical: 20,
+          borderRadius: 20,
+        }}
       >
-        <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "space-between" }}>
-          <View style={{ width: "60%", flexDirection: "column", gap: 14 }}>
-            <AppText style={{ fontWeight: "800", fontSize: 24, color: "#ffffff" }}>Lower Body Training</AppText>
+        <View
+          style={{
+            height: "100%",
+            flexDirection: "row",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
+          <View
+            style={{
+              width: "60%",
+              height: "100%",
+              flexDirection: "column",
+              gap: 14,
+              justifyContent: "space-between",
+            }}
+          >
+            <AppText style={{ fontWeight: "800", fontSize: 24, color: "#ffffff" }}>{workout.name}</AppText>
 
             <View style={{ flexDirection: "column", gap: 10 }}>
               <View style={styles.transparentWrapper}>
                 <FireIcon />
 
-                <AppText style={styles.transparentText}>500 Kcal</AppText>
+                <AppText style={styles.transparentText}>{workout.calories} Kcal</AppText>
               </View>
 
               <View style={styles.transparentWrapper}>
                 <ClockIcon />
 
-                <AppText style={styles.transparentText}>50 Min</AppText>
+                <AppText style={styles.transparentText}>{workout.minutes} mins</AppText>
               </View>
             </View>
           </View>
