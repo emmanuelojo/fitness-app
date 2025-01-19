@@ -1,6 +1,6 @@
-import { ImageBackground, Platform, ScrollView, StyleSheet, View } from "react-native";
+import { Dimensions, Image, ImageBackground, Platform, ScrollView, StyleSheet, View } from "react-native";
 import { useLocalSearchParams, useRouter } from "expo-router";
-import React from "react";
+import { useState, useEffect } from "react";
 import AppText from "@/components/AppText";
 import IconButton from "@/components/IconButton";
 import Spacing from "@/constants/Spacing";
@@ -15,9 +15,13 @@ import Screen from "@/components/Screen";
 import { workouts } from "@/data";
 import WorkoutExercise from "@/components/WorkoutExercise";
 
+const OverlayImage = require("@/assets/images/onboarding/overlay.png");
+
 const ExerciseDetails = () => {
   const { id } = useLocalSearchParams();
   const router = useRouter();
+  const { width } = Dimensions.get("window");
+  const [dynamicWidth, setDynamicWidth] = useState(width);
 
   const workout = workouts.filter((el) => el.id === Number(id))[0];
 
@@ -25,11 +29,16 @@ const ExerciseDetails = () => {
     router.push("/");
   };
 
+  useEffect(() => {
+    setDynamicWidth(width);
+  }, [width]);
+
   return (
     <Screen>
       <ScrollView
         style={{
           paddingHorizontal: Spacing.padding.base,
+          backgroundColor: "#192126",
         }}
       >
         <View
@@ -45,192 +54,104 @@ const ExerciseDetails = () => {
               position: "absolute",
               left: 0,
             }}
+            color="#192126"
             name="chevron-back"
           />
-          <AppText>Plan Overview</AppText>
+          <AppText>Workout</AppText>
         </View>
-        <ImageBackground
-          source={workout.image}
-          resizeMode="cover"
-          style={{
-            height: 250,
-            marginVertical: Spacing.margin.lg,
-            borderRadius: Spacing.borderRadius.base,
-            overflow: "hidden",
-            justifyContent: "space-between",
-            paddingVertical: Spacing.padding.base,
-          }}
-        >
-          <View
-            style={{
-              paddingHorizontal: Spacing.padding.base,
-              alignItems: "flex-end",
-            }}
-          >
-            <IconButton
-              name="bookmark-outline"
-              style={{
-                backgroundColor: Colors.primary,
-                borderWidth: 0,
-              }}
-            />
-          </View>
-          <View
-            style={{
-              borderRadius: Spacing.borderRadius.base,
-              overflow: "hidden",
-              marginHorizontal: Spacing.margin.lg,
-            }}
-          >
-            <BlurView
-              tint="dark"
-              intensity={Platform.OS === "android" ? 100 : 80}
-              style={{
-                padding: Spacing.padding.base,
-                flexDirection: "row",
-                justifyContent: "space-between",
-              }}
-            >
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}
-              >
-                <AppText
-                  style={{
-                    fontFamily: Font["poppins-semiBold"],
-                    color: Colors.accent,
-                    marginRight: Spacing.margin.base,
-                  }}
-                >
-                  {workout.minutes}
-                </AppText>
-                <AppText
-                  style={{
-                    fontSize: FontSize.sm,
-                  }}
-                >
-                  minutes
-                </AppText>
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}
-              >
-                <AppText
-                  style={{
-                    fontFamily: Font["poppins-semiBold"],
-                    color: Colors.accent,
-                    marginRight: Spacing.margin.base,
-                  }}
-                >
-                  {workout.calories}
-                </AppText>
-                <AppText
-                  style={{
-                    fontSize: FontSize.sm,
-                  }}
-                >
-                  calories
-                </AppText>
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  alignItems: "center",
-                }}
-              >
-                <AppText
-                  style={{
-                    fontFamily: Font["poppins-semiBold"],
-                    color: Colors.accent,
-                    marginRight: Spacing.margin.base,
-                  }}
-                >
-                  {workout.exercises.length}
-                </AppText>
-                <AppText
-                  style={{
-                    fontSize: FontSize.sm,
-                  }}
-                >
-                  exercises
-                </AppText>
-              </View>
-            </BlurView>
-          </View>
-        </ImageBackground>
+
         <View
           style={{
-            flexDirection: "row",
-            alignItems: "center",
-            justifyContent: "space-between",
+            position: "relative",
+            marginTop: 40,
+            width: dynamicWidth - Spacing.padding.base * 2,
           }}
         >
+          <Image
+            source={workout.image}
+            style={{
+              width: "auto",
+              height: 250,
+              borderRadius: 20,
+              objectFit: "cover",
+            }}
+          ></Image>
+
+          <Image
+            source={OverlayImage}
+            style={{
+              width: "100%",
+              height: 134,
+              position: "absolute",
+              bottom: 0,
+              left: "50%",
+              transform: "translate(-50%,0%)",
+              borderBottomLeftRadius: 20,
+              borderBottomRightRadius: 20,
+            }}
+          />
+
+          <BlurView tint="dark" intensity={Platform.OS === "android" ? 100 : 80} style={styles.workoutSummary}>
+            <View style={styles.workoutTimeWrapper}>
+              <IconButton name="time" />
+
+              <View>
+                <AppText style={styles.workoutIconTitle}>Time</AppText>
+                <AppText style={styles.workoutIconText}>20 mins</AppText>
+              </View>
+            </View>
+
+            <View style={styles.verticalDivider}></View>
+
+            <AppText style={{ color: "white" }}>{dynamicWidth}</AppText>
+
+            <View style={styles.workoutTimeWrapper}>
+              <IconButton name="cloud" />
+
+              <View>
+                <AppText style={styles.workoutIconTitle}>Burn</AppText>
+                <AppText style={styles.workoutIconText}>95 kCal</AppText>
+              </View>
+            </View>
+          </BlurView>
+        </View>
+
+        <View style={{ marginTop: 60, flexDirection: "column", gap: 16 }}>
           <AppText
             style={{
-              fontSize: FontSize.lg,
-              fontFamily: Font["poppins-semiBold"],
+              color: "#FFFFFF",
+              fontWeight: 900,
+              fontSize: 24,
+              textTransform: "capitalize",
+              fontFamily: Font["poppins-regular"],
             }}
           >
-            {workout.name}
+            lower body training
           </AppText>
-          <View
-            style={{
-              flexDirection: "row",
-              alignItems: "center",
-            }}
-          >
-            <Ionicons name="star" size={20} color={Colors.yellow} />
-            <AppText
-              style={{
-                marginLeft: Spacing.margin.sm,
-              }}
-            >
-              {workout.rating}
-            </AppText>
+          <AppText style={{ color: "#FFFFFF50", fontSize: 15 }}>
+            The lower abdomen and hips are the most difficult areas of the body to reduce when we are on a diet. Even
+            so, in this area, especially the legs as a whole, you can reduce weight even if you don't use tools.
+          </AppText>
+        </View>
+
+        <View style={{ marginTop: 40, flexDirection: "column", gap: 20 }}>
+          <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: "center" }}>
+            <AppText style={{ color: "#FFFFFF", fontSize: 20, fontWeight: 700 }}>Rounds</AppText>
+
+            <View style={{ flexDirection: "row", alignItems: "flex-end" }}>
+              <AppText style={{ color: "#FFFFFF", fontSize: 16, fontWeight: 500 }}>1</AppText>
+              <AppText style={{ color: "#FFFFFF", fontSize: 12, fontWeight: 500 }}>/8</AppText>
+            </View>
+          </View>
+
+          <View style={{ flexDirection: "column", gap: 16, marginBottom: 100 }}>
+            {workout.exercises.map((exercise) => (
+              <WorkoutExercise key={exercise.id} exercise={exercise} />
+            ))}
           </View>
         </View>
-        <AppText
-          style={{
-            marginTop: Spacing.margin.sm,
-          }}
-        >
-          {workout.coach}
-        </AppText>
-        <AppText
-          style={{
-            marginTop: Spacing.margin.base,
-            fontFamily: Font["poppins-semiBold"],
-          }}
-        >
-          Description
-        </AppText>
-        <AppText
-          numberOfLines={3}
-          style={{
-            marginTop: Spacing.margin.sm,
-            fontFamily: Font["poppins-regular"],
-          }}
-        >
-          {workout.description}
-        </AppText>
-        <AppText
-          style={{
-            marginVertical: Spacing.margin.base,
-            fontFamily: Font["poppins-semiBold"],
-          }}
-        >
-          Exercises ({workout.exercises.length})
-        </AppText>
-
-        {workout.exercises.map((exercise) => (
-          <WorkoutExercise key={exercise.id} exercise={exercise} />
-        ))}
       </ScrollView>
+
       <LinearGradient
         style={{
           position: "absolute",
@@ -242,7 +163,7 @@ const ExerciseDetails = () => {
         }}
         colors={[`rgba(0,0,0,0)`, "black"]}
       >
-        <Button>Start Workout</Button>
+        <Button style={{ borderRadius: 32 }}>Let's Workout</Button>
       </LinearGradient>
     </Screen>
   );
@@ -250,4 +171,47 @@ const ExerciseDetails = () => {
 
 export default ExerciseDetails;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  workoutSummary: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: 258,
+    height: 64,
+    padding: 16,
+    gap: 30,
+    position: "absolute",
+    bottom: -32,
+    top: "50%",
+    left: "50%",
+    transform: "translate(-50%,150%)",
+    borderWidth: 1,
+    borderColor: "#19212630",
+    borderRadius: 16,
+  },
+  workoutTimeWrapper: {
+    width: 84,
+    height: 32,
+    flexDirection: "row",
+    gap: 8,
+    alignItems: "center",
+  },
+  workoutIconContainer: {
+    width: 32,
+    height: 32,
+    backgroundColor: "#BBF246",
+    borderRadius: 5,
+  },
+  workoutIconTitle: {
+    color: "#FFFFFF",
+    fontSize: 10,
+  },
+  workoutIconText: {
+    color: "#BBF246",
+    fontSize: 12,
+  },
+  verticalDivider: {
+    width: 1,
+    height: 32,
+    backgroundColor: "#FFFFFF",
+  },
+});

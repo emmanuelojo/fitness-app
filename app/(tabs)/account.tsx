@@ -8,6 +8,7 @@ import {
   ScrollView,
   Pressable,
   GestureResponderEvent,
+  Modal,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { useLocalSearchParams, useRouter } from "expo-router";
@@ -123,9 +124,12 @@ export default function TabTwoScreen() {
         </View>
       </ScrollView>
 
-      <BottomModal isVisible={isModalVisible} onClose={onModalClose}>
+      {/* <BottomModal isVisible={isModalVisible} onClose={onModalClose}>
         <Logout onClose={onModalClose} logout={handleLogout} />
-      </BottomModal>
+      </BottomModal> */}
+      <Modal animationType="slide" onRequestClose={onModalClose} presentationStyle="pageSheet" visible={isModalVisible}>
+        <Logout onClose={onModalClose} logout={handleLogout} />
+      </Modal>
     </Screen>
   );
 }

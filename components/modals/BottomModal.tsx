@@ -8,7 +8,13 @@ type Props = PropsWithChildren<{
 
 export default function BottomModal({ isVisible, children, onClose }: Props) {
   return (
-    <Modal animationType="slide" transparent={true} visible={isVisible}>
+    <Modal
+      animationType="slide"
+      onRequestClose={onClose}
+      presentationStyle="pageSheet"
+      transparent={true}
+      visible={isVisible}
+    >
       <TouchableWithoutFeedback onPress={(e) => onClose(e)}>
         <View style={styles.modalContent}>{children}</View>
       </TouchableWithoutFeedback>

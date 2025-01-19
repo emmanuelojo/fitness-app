@@ -12,7 +12,7 @@ interface Props {
   onPress?: () => void;
 }
 
-const IconButton = ({ style, size = 24, color = Colors.text, name, onPress }: Props) => {
+const IconButton = ({ style, size = 24, color = Colors.black, name, onPress }: Props) => {
   return (
     <TouchableOpacity
       onPress={onPress}
@@ -20,8 +20,9 @@ const IconButton = ({ style, size = 24, color = Colors.text, name, onPress }: Pr
         {
           height: 40,
           width: 40,
-          borderWidth: 1,
-          borderColor: Colors.border,
+          backgroundColor: Colors.green,
+          // borderWidth: 1,
+          // borderColor: Colors.border,
           alignItems: "center",
           justifyContent: "center",
           borderRadius: Spacing.borderRadius.base,

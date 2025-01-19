@@ -10,15 +10,19 @@ import AppText from "../AppText";
 import { FireIcon } from "@/assets/icons/FireIcon";
 import { ClockIcon } from "@/assets/icons/ClockIcon";
 import { PlayIcon } from "@/assets/icons/PlayIcon";
+import { useRouter } from "expo-router";
 
 interface Props {
-  workout?: WorkoutType;
+  workout: WorkoutType;
   onPress?: (id: number) => void;
 }
 
 const PopularWorkout = ({ workout, onPress }: Props) => {
+  const router = useRouter();
+
   const handlePress = () => {
     // if (onPress) onPress(workout.id);
+    router.push(`/exercises/${workout.id}`);
   };
 
   return (
