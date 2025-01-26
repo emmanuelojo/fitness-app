@@ -72,7 +72,8 @@ const styles = StyleSheet.create({
   },
   ctaContainer: {
     flexDirection: "column",
-    gap: 46,
+    gap: 10,
+    justifyContent: "space-between",
     backgroundColor: "#ffffff",
     width: "100%",
     height: "33%",
