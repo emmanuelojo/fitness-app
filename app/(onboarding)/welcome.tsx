@@ -1,17 +1,29 @@
-import { StyleSheet, Image, View, Text, TouchableOpacity, Pressable } from "react-native";
+import { StyleSheet, Image, View, Text, TouchableOpacity, Pressable, Animated } from "react-native";
 import Screen from "@/components/Screen";
 import Spacing from "@/constants/Spacing";
 import FontSize from "@/constants/FontSize";
 import Font from "@/constants/Font";
 import { Link, router } from "expo-router";
+import { useState, useEffect, useRef } from "react";
 
 const WelcomeImage = require("@/assets/images/onboarding/1.png");
 const OverlayImage = require("@/assets/images/onboarding/overlay.png");
 
 const welcome = () => {
+  const animation = useRef(new Animated.Value(0)).current; // Initial value is 0
+
   const handleGetStarted = () => {
     router.push("/");
   };
+
+  useEffect(() => {
+    // Animate the width from 0 to 100% of the container over 5 seconds
+    Animated.timing(animation, {
+      toValue: 1, // 1 means 100% width
+      duration: 5000, // 5 seconds
+      useNativeDriver: false, // Since we are animating width, not transform
+    }).start();
+  }, []);
 
   return (
     <Screen>
@@ -24,6 +36,15 @@ const welcome = () => {
           <View style={styles.ctaTextContainer}>
             <Text style={styles.title}>Wherever you are health is number one</Text>
             <Text style={styles.description}>There is no instant way to healthy life</Text>
+
+            <View style={styles.loadingBarWrapper}>
+              <Animated.View
+                style={[
+                  styles.loadingBar,
+                  { width: animation.interpolate({ inputRange: [0, 1], outputRange: ["0%", "100%"] }) },
+                ]}
+              />
+            </View>
           </View>
 
           {/* <Link href="/"> */}
@@ -104,6 +125,22 @@ const styles = StyleSheet.create({
     color: "rgba(25,33,38,0.5)",
     fontWeight: "400",
     fontSize: 15,
+  },
+  loadingBarWrapper: {
+    marginTop: 40,
+    marginHorizontal: "auto",
+    width: 65,
+    height: 5,
+    flexDirection: "row",
+    alignItems: "center",
+    borderRadius: 5,
+    backgroundColor: "#192126",
+    paddingHorizontal: 2,
+  },
+  loadingBar: {
+    height: 3,
+    borderRadius: 5,
+    backgroundColor: "#BBF246",
   },
   button: {
     width: "100%",
