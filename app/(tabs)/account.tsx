@@ -21,7 +21,7 @@ import BottomModal from "@/components/modals/BottomModal";
 import Logout from "@/components/auth/Logout";
 import { Feather } from "@expo/vector-icons";
 
-export default function TabTwoScreen() {
+export default function Account() {
   const router = useRouter();
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 

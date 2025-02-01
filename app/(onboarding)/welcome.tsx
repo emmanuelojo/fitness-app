@@ -10,7 +10,7 @@ import Animated, { FadeInDown, FadeInUp } from "react-native-reanimated";
 const WelcomeImage = require("@/assets/images/onboarding/1.png");
 const OverlayImage = require("@/assets/images/onboarding/overlay.png");
 
-const welcome = () => {
+const Welcome = () => {
   const animation = useRef(new RNAnimated.Value(0)).current; // Initial value is 0
 
   const { height } = Dimensions.get("window");
@@ -182,4 +182,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default welcome;
+export default Welcome;

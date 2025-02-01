@@ -13,7 +13,7 @@ import SectionHeader from "@/components/SectionHeader";
 import BestForYou from "@/components/explore/BestForYou";
 import ChallengeCard from "@/components/explore/ChallengeCard";
 
-const explore = () => {
+const Explore = () => {
   const dynamicWidth = useWindowDimensions().width;
 
   const evenIndexedBestForYouItems = bestForYou.filter((_, index) => index % 2 === 0);
@@ -143,4 +143,4 @@ const explore = () => {
   );
 };
 
-export default explore;
+export default Explore;

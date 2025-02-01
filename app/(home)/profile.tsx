@@ -15,7 +15,7 @@ import FontSize from "@/constants/FontSize";
 
 const PlaceholderImage = require("@/assets/images/placeholder.png");
 
-const profile = () => {
+const Profile = () => {
   const router = useRouter();
   const { height } = Dimensions.get("window");
   const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined);
@@ -217,4 +217,5 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-export default profile;
+
+export default Profile;
