@@ -1,10 +1,28 @@
-import { View, StyleSheet } from "react-native";
+import { View, StyleSheet, Dimensions } from "react-native";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import TabBarButton from "./TabBarButton";
 
 export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
+  const { width } = Dimensions.get("window");
+
   return (
-    <View style={styles.tabBar}>
+    <View
+      style={{
+        position: "absolute",
+        left: 10,
+        right: 10,
+        height: 64,
+        bottom: 10,
+        flexDirection: "row",
+        gap: width < 500 ? 20 : 40,
+        alignItems: "center",
+        alignSelf: "center",
+        backgroundColor: "#192126",
+        paddingVertical: 16,
+        paddingHorizontal: 15,
+        borderRadius: 32,
+      }}
+    >
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label =
@@ -53,6 +71,8 @@ export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
 const styles = StyleSheet.create({
   tabBar: {
     position: "absolute",
+    left: 10,
+    right: 10,
     height: 64,
     bottom: 10,
     flexDirection: "row",
@@ -61,11 +81,7 @@ const styles = StyleSheet.create({
     alignSelf: "center",
     backgroundColor: "#192126",
     paddingVertical: 16,
-    paddingHorizontal: 30,
+    paddingHorizontal: 15,
     borderRadius: 32,
-    // shadowColor: "#000",
-    // shadowOffset: { width: 0, height: 10 },
-    // shadowRadius: 10,
-    // shadowOpacity: 0.1,
   },
 });

@@ -35,7 +35,7 @@ const profile = () => {
   };
 
   const goBack = () => {
-    router.push("/");
+    router.back();
   };
 
   const handleOpenImageModal = () => {
@@ -60,8 +60,7 @@ const profile = () => {
       <ScrollView
         style={{
           paddingHorizontal: Spacing.padding.base,
-          borderColor: "blue",
-          borderWidth: 2,
+          paddingVertical: Spacing.padding.base,
         }}
       >
         <View
@@ -77,7 +76,7 @@ const profile = () => {
               position: "absolute",
               left: 0,
             }}
-            name="chevron-back"
+            name="chevron-left"
           />
 
           <View style={{ flexDirection: "row", alignContent: "center" }}>
@@ -93,8 +92,6 @@ const profile = () => {
             flexDirection: "column",
             justifyContent: "space-between",
             gap: 30,
-            borderColor: "yellow",
-            borderWidth: 2,
           }}
         >
           <View style={{ flexDirection: "column", gap: 8 }}>
@@ -113,8 +110,6 @@ const profile = () => {
               flexDirection: "column",
               justifyContent: "space-between",
               gap: 30,
-              borderColor: "red",
-              borderWidth: 2,
             }}
           >
             <View style={{ flexDirection: "column", gap: 16 }}>
@@ -202,9 +197,10 @@ const profile = () => {
 
       <BottomModal isVisible={isModalVisible} onClose={onModalClose}>
         <View style={styles.buttonsContainer}>
-          <Button onPress={pickImageAsync} style={{ alignContent: "center" }}>
+          <Button onPress={pickImageAsync} style={{ flexDirection: "row", alignItems: "center" }}>
             <Ionicons name="image" size={16} style={{ marginRight: 4 }} />
-            Choose a photo
+
+            <AppText>Choose a photo</AppText>
           </Button>
           {/* <Button label="Use this photo" /> */}
         </View>

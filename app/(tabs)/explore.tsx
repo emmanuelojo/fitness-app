@@ -24,14 +24,14 @@ const explore = () => {
       <ScrollView
         style={{
           paddingHorizontal: Spacing.padding.base,
-          paddingVertical: Spacing.padding.base,
+          paddingTop: Spacing.padding.base,
+          paddingBottom: 80,
           gap: 24,
         }}
       >
         <View
           style={{
             position: "relative",
-            marginTop: 40,
             width: dynamicWidth - Spacing.padding.base * 2,
             height: 180,
             flexDirection: "column",

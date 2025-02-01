@@ -51,7 +51,7 @@ const TodaysPlan = ({ plan, onPress }: Props) => {
           <View>
             <AppText style={{ textTransform: "capitalize" }}>{plan.name}</AppText>
 
-            <AppText style={{ color: "rgba(25,33,38,.5)", fontSize: 13 }}>{plan.description}</AppText>
+            <AppText style={{ color: "rgba(25,33,38,.5)", fontSize: 12 }}>{plan.description}</AppText>
           </View>
 
           {/* percent={plan.progress} */}

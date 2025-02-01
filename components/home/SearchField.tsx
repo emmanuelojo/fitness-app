@@ -23,7 +23,8 @@ const SearchField = () => {
         placeholder="Search Workouts.."
         placeholderTextColor="rgba(25,33,38,0.5)"
         style={{
-          fontSize: FontSize.base,
+          fontSize: 14,
+          fontFamily: "Inter_400Regular",
           width: "80%",
           outline: "none",
           color: "rgba(25,33,38,0.5)",

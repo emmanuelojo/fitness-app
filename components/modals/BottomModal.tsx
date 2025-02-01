@@ -1,5 +1,6 @@
 import { Modal, View, StyleSheet, TouchableWithoutFeedback, GestureResponderEvent } from "react-native";
 import { PropsWithChildren } from "react";
+import { Feather } from "@expo/vector-icons";
 
 type Props = PropsWithChildren<{
   isVisible: boolean;
@@ -16,7 +17,22 @@ export default function BottomModal({ isVisible, children, onClose }: Props) {
       visible={isVisible}
     >
       <TouchableWithoutFeedback onPress={(e) => onClose(e)}>
-        <View style={styles.modalContent}>{children}</View>
+        <View style={styles.modalContent}>
+          <View
+            style={{
+              width: "auto",
+              flexDirection: "row",
+              justifyContent: "flex-end",
+              alignSelf: "flex-end",
+              padding: 10,
+              marginRight: 10,
+            }}
+          >
+            <Feather name="x" color={"white"} onPress={(e) => onClose(e)} />
+          </View>
+
+          {children}
+        </View>
       </TouchableWithoutFeedback>
     </Modal>
   );

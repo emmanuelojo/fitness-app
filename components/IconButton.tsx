@@ -1,6 +1,6 @@
 import { StyleProp, TouchableOpacity, ViewStyle } from "react-native";
 import React from "react";
-import { Ionicons } from "@expo/vector-icons";
+import { Feather, Ionicons } from "@expo/vector-icons";
 import Spacing from "../constants/Spacing";
 import Colors from "../constants/Colors";
 
@@ -8,7 +8,7 @@ interface Props {
   style?: StyleProp<ViewStyle>;
   size?: number;
   color?: string;
-  name: keyof typeof Ionicons.glyphMap;
+  name: keyof typeof Feather.glyphMap; // keyof typeof Ionicons.glyphMap;
   onPress?: () => void;
 }
 
@@ -30,7 +30,7 @@ const IconButton = ({ style, size = 24, color = Colors.black, name, onPress }: P
         style,
       ]}
     >
-      <Ionicons name={name} size={size} color={color} />
+      <Feather name={name} size={size} color={color} />
     </TouchableOpacity>
   );
 };

@@ -1,4 +1,4 @@
-import { StyleSheet, Image, View, Text, TouchableOpacity, Pressable, Animated } from "react-native";
+import { StyleSheet, Image, View, Text, TouchableOpacity, Pressable, Animated, Dimensions } from "react-native";
 import Screen from "@/components/Screen";
 import Spacing from "@/constants/Spacing";
 import FontSize from "@/constants/FontSize";
@@ -12,8 +12,10 @@ const OverlayImage = require("@/assets/images/onboarding/overlay.png");
 const welcome = () => {
   const animation = useRef(new Animated.Value(0)).current; // Initial value is 0
 
+  const { height } = Dimensions.get("window");
+
   const handleGetStarted = () => {
-    router.push("/");
+    router.push("/(onboarding)/login");
   };
 
   useEffect(() => {
@@ -28,11 +30,30 @@ const welcome = () => {
   return (
     <Screen>
       <View style={styles.container}>
-        <Image source={WelcomeImage} style={styles.image} />
+        <Image
+          source={WelcomeImage}
+          style={{
+            width: "100%",
+            height: height < 800 ? "50%" : "67%",
+          }}
+        />
 
         <Image source={OverlayImage} style={styles.overlayImage} />
 
-        <View style={styles.ctaContainer}>
+        <View
+          style={{
+            flexDirection: "column",
+            gap: 10,
+            justifyContent: "space-between",
+            backgroundColor: "#ffffff",
+            width: "100%",
+            height: height < 800 ? "50%" : "33%",
+            paddingLeft: 20,
+            paddingRight: 20,
+            paddingBottom: 24,
+            paddingTop: 24,
+          }}
+        >
           <View style={styles.ctaTextContainer}>
             <Text style={styles.title}>Wherever you are health is number one</Text>
             <Text style={styles.description}>There is no instant way to healthy life</Text>
@@ -80,8 +101,8 @@ const styles = StyleSheet.create({
     position: "relative",
   },
   image: {
-    width: "100%",
-    height: "67%",
+    // width: "100%",
+    // height:  "67%",
   },
   overlayImage: {
     width: "100%",
@@ -92,16 +113,16 @@ const styles = StyleSheet.create({
     transform: "translate(-50%,-20%)",
   },
   ctaContainer: {
-    flexDirection: "column",
-    gap: 10,
-    justifyContent: "space-between",
-    backgroundColor: "#ffffff",
-    width: "100%",
-    height: "33%",
-    paddingLeft: 20,
-    paddingRight: 20,
-    paddingBottom: 24,
-    paddingTop: 24,
+    // flexDirection: "column",
+    // gap: 10,
+    // justifyContent: "space-between",
+    // backgroundColor: "#ffffff",
+    // width: "100%",
+    // height: "33%",
+    // paddingLeft: 20,
+    // paddingRight: 20,
+    // paddingBottom: 24,
+    // paddingTop: 24,
   },
   ctaTextContainer: {
     width: "100%",

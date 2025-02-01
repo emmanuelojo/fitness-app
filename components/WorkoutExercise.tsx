@@ -1,4 +1,4 @@
-import { Image, TouchableOpacity, View } from "react-native";
+import { Image, TouchableOpacity, View, Dimensions } from "react-native";
 import Colors from "@/constants/Colors";
 import { Exercise } from "@/data";
 import AppText from "./AppText";
@@ -10,6 +10,8 @@ interface Props {
 }
 
 const WorkoutExercise = ({ exercise }: Props) => {
+  const { width } = Dimensions.get("window");
+
   return (
     <TouchableOpacity
       style={{
@@ -18,6 +20,7 @@ const WorkoutExercise = ({ exercise }: Props) => {
         borderRadius: 16,
         padding: 8,
         flexDirection: "row",
+        justifyContent: "flex-start",
         gap: 8,
         position: "relative",
       }}
@@ -33,7 +36,7 @@ const WorkoutExercise = ({ exercise }: Props) => {
 
       <View
         style={{
-          width: "83%",
+          width: width < 500 ? "74%" : "90%",
           flexDirection: "row",
           alignItems: "center",
           justifyContent: "space-between",
@@ -44,7 +47,7 @@ const WorkoutExercise = ({ exercise }: Props) => {
           <AppText
             style={{
               color: "#FFFFFF",
-              fontFamily: Font["poppins-semiBold"],
+              fontFamily: "Inter_400Regular",
               textAlign: "left",
             }}
           >
@@ -53,7 +56,7 @@ const WorkoutExercise = ({ exercise }: Props) => {
 
           <AppText
             style={{
-              fontFamily: Font["poppins-regular"],
+              fontFamily: "Inter_400Regular",
               fontSize: 13,
               color: "#FFFFFF50",
               textAlign: "left",

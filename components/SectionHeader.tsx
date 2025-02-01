@@ -22,13 +22,14 @@ const SectionHeader = ({ title, link, showSeeAll = true }: Props) => {
         marginVertical: Spacing.margin.lg,
       }}
     >
-      <AppText style={{ color: "black" }}>{title}</AppText>
+      <AppText style={{ color: "black", fontFamily: "Inter_500Medium" }}>{title}</AppText>
       {showSeeAll && (
         <TouchableOpacity>
           {/* <Link href={link}> */}
           <AppText
             style={{
-              fontSize: FontSize.sm,
+              fontSize: 12,
+              fontFamily: "Inter_300Light",
               color: "black",
             }}
           >

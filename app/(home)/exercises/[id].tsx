@@ -38,6 +38,7 @@ const ExerciseDetails = () => {
       <ScrollView
         style={{
           paddingHorizontal: Spacing.padding.base,
+          paddingTop: Spacing.padding.base,
           backgroundColor: "#192126",
         }}
       >
@@ -55,9 +56,9 @@ const ExerciseDetails = () => {
               left: 0,
             }}
             color="#192126"
-            name="chevron-back"
+            name="chevron-left"
           />
-          <AppText>Workout</AppText>
+          <AppText style={{ color: "white" }}>Workout</AppText>
         </View>
 
         <View
@@ -141,15 +142,14 @@ const ExerciseDetails = () => {
           <AppText
             style={{
               color: "#FFFFFF",
-              fontWeight: 900,
               fontSize: 24,
               textTransform: "capitalize",
-              fontFamily: Font["poppins-regular"],
+              fontFamily: "Inter_600SemiBold",
             }}
           >
             {workout.name}
           </AppText>
-          <AppText style={{ color: "#FFFFFF50", fontSize: 15 }}>{workout.description}</AppText>
+          <AppText style={{ color: "#FFFFFF50", fontSize: 14 }}>{workout.description}</AppText>
         </View>
 
         <View style={{ marginTop: 40, flexDirection: "column", gap: 20 }}>
@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
   workoutSummary: {
     flexDirection: "row",
     justifyContent: "space-between",
-    width: 258,
+    width: "auto", // 258,
     height: 64,
     padding: 16,
     gap: 30,

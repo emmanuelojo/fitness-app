@@ -64,7 +64,9 @@ const PopularWorkout = ({ workout, onPress }: Props) => {
               justifyContent: "space-between",
             }}
           >
-            <AppText style={{ fontWeight: "800", fontSize: 24, color: "#ffffff" }}>{workout.name}</AppText>
+            <AppText style={{ fontWeight: "700", fontFamily: "Inter_700Bold", fontSize: 24, color: "#ffffff" }}>
+              {workout.name}
+            </AppText>
 
             <View style={{ flexDirection: "column", gap: 10 }}>
               <View style={styles.transparentWrapper}>

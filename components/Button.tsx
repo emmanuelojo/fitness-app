@@ -31,7 +31,7 @@ const Button = ({ style, children, textStyle, onPress }: Props) => {
         style={[
           {
             fontSize: FontSize.base,
-            fontFamily: Font["poppins-regular"],
+            fontFamily: "Inter_400Regular",
           },
           textStyle,
         ]}

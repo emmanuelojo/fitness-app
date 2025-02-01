@@ -19,6 +19,7 @@ import AppText from "@/components/AppText";
 import Colors from "@/constants/Colors";
 import BottomModal from "@/components/modals/BottomModal";
 import Logout from "@/components/auth/Logout";
+import { Feather } from "@expo/vector-icons";
 
 export default function TabTwoScreen() {
   const router = useRouter();
@@ -58,7 +59,7 @@ export default function TabTwoScreen() {
             <View style={styles.card}>
               <View style={styles.wrapper}>
                 <View style={styles.iconContainer}>
-                  <Ionicons name="person" size={30} color="black" />
+                  <Feather name="user" size={30} />
                 </View>
 
                 <View style={styles.titleContainer}>
@@ -67,8 +68,8 @@ export default function TabTwoScreen() {
                 </View>
               </View>
 
-              <Pressable>
-                <Ionicons name="chevron-forward" size={20} color={"white"} />
+              <Pressable onPress={goToProfile}>
+                <Ionicons name="chevron-forward" size={20} />
               </Pressable>
             </View>
           </Pressable>
@@ -76,7 +77,7 @@ export default function TabTwoScreen() {
           <View style={styles.card}>
             <View style={styles.wrapper}>
               <View style={styles.iconContainer}>
-                <Ionicons name="text" size={30} color="black" />
+                <Feather name="award" size={30} />
               </View>
 
               <View style={styles.titleContainer}>
@@ -86,14 +87,14 @@ export default function TabTwoScreen() {
             </View>
 
             <Pressable>
-              <Ionicons name="chevron-forward" size={20} color={"white"} />
+              <Ionicons name="chevron-forward" size={20} />
             </Pressable>
           </View>
 
           <View style={styles.card}>
             <View style={styles.wrapper}>
               <View style={styles.iconContainer}>
-                <Ionicons name="book-outline" size={30} color="black" />
+                <Feather name="book" size={30} />
               </View>
 
               <View style={styles.titleContainer}>
@@ -111,7 +112,7 @@ export default function TabTwoScreen() {
             <View style={styles.card}>
               <View style={styles.wrapper}>
                 <View style={styles.iconContainer}>
-                  <Ionicons name="log-out-outline" size={30} color="black" />
+                  <Feather name="log-out" size={30} />
                 </View>
 
                 <View style={styles.titleContainer}>

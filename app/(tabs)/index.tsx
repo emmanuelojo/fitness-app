@@ -23,7 +23,8 @@ export default function HomeScreen() {
       <ScrollView
         style={{
           paddingHorizontal: Spacing.padding.base,
-          paddingVertical: Spacing.padding.base,
+          paddingTop: Spacing.padding.base,
+          paddingBottom: 80,
         }}
       >
         <View
@@ -44,10 +45,10 @@ export default function HomeScreen() {
                 marginLeft: Spacing.margin.base,
               }}
             >
-              <AppText>Good morning, </AppText>
+              <AppText style={{ fontFamily: "Inter_400Regular" }}>Good morning, </AppText>
               <AppText
                 style={{
-                  fontFamily: Font["poppins-semiBold"],
+                  fontFamily: "Inter_700Bold",
                   textTransform: "capitalize",
                   fontSize: 28,
                   fontWeight: 700,
@@ -57,7 +58,7 @@ export default function HomeScreen() {
               </AppText>
             </View>
           </View>
-          <IconButton name="notifications" color="black" />
+          <IconButton name="bell" color="black" />
         </View>
 
         <SearchField />

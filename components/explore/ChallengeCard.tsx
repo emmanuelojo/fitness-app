@@ -39,6 +39,7 @@ const ChallengeCard = ({ challenge }: Props) => {
             fontSize: 12,
             fontWeight: 600,
             zIndex: 5,
+            fontFamily: "Inter_400Regular",
           }}
         >
           {challenge.name}

@@ -55,7 +55,9 @@ const BestForYou = ({ workout }: Props) => {
 
 const styles = StyleSheet.create({
   wrapper: {
-    width: 60,
+    width: "auto",
+    flexDirection: "row",
+    alignSelf: "flex-start",
     backgroundColor: "#F1F1F1",
     paddingVertical: 2,
     paddingHorizontal: 6,
@@ -66,7 +68,9 @@ const styles = StyleSheet.create({
     color: "rgba(25,33,38,.7)",
   },
   durationWrapper: {
-    width: 55,
+    width: "auto",
+    flexDirection: "row",
+    alignSelf: "flex-start",
     backgroundColor: "#F1F1F1",
     paddingVertical: 2,
     paddingHorizontal: 6,
