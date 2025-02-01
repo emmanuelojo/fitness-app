@@ -14,6 +14,7 @@ import WorkoutExercise from "@/components/WorkoutExercise";
 import { FireIcon } from "@/assets/icons/FireIcon";
 import Colors from "@/constants/Colors";
 import { ClockIcon } from "@/assets/icons/ClockIcon";
+import Animated, { FadeInDown } from "react-native-reanimated";
 
 const OverlayImage = require("@/assets/images/onboarding/overlay.png");
 
@@ -181,7 +182,9 @@ const ExerciseDetails = () => {
         }}
         colors={[`rgba(0,0,0,0)`, "black"]}
       >
-        <Button style={{ borderRadius: 32 }}>Let's Workout</Button>
+        <Animated.View entering={FadeInDown.delay(200).duration(1000).springify()}>
+          <Button style={{ borderRadius: 32 }}>Let's Workout</Button>
+        </Animated.View>
       </LinearGradient>
     </Screen>
   );
