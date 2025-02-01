@@ -5,6 +5,7 @@ import FontSize from "@/constants/FontSize";
 import Font from "@/constants/Font";
 import { Link, router } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import Animated, { FadeInDown, FadeInUp } from "react-native-reanimated";
 
 const Login = () => {
   const { width } = Dimensions.get("window");
@@ -24,13 +25,15 @@ const Login = () => {
             justifyContent: "center",
           }}
         >
-          <Text style={{ fontSize: 50 }}> FitFam</Text>
+          <Animated.Text entering={FadeInUp.delay(200).duration(1000).springify()} style={{ fontSize: 50 }}>
+            FitFam
+          </Animated.Text>
         </View>
 
         <View style={{ height: "30%" }}>
           <View style={{ flexDirection: "column", gap: 10 }}>
             <Pressable onPress={handleGetStarted}>
-              <View style={styles.button}>
+              <Animated.View entering={FadeInDown.delay(400).duration(1000).springify()} style={styles.button}>
                 <Ionicons name="logo-google" size={16} style={{ color: "#ffffff" }} />
                 <Text
                   style={[
@@ -43,11 +46,11 @@ const Login = () => {
                 >
                   Sign in with Google
                 </Text>
-              </View>
+              </Animated.View>
             </Pressable>
 
             <Pressable onPress={handleGetStarted}>
-              <View style={styles.button}>
+              <Animated.View entering={FadeInDown.delay(600).duration(1000).springify()} style={styles.button}>
                 <Ionicons name="logo-apple" size={16} style={{ color: "white" }} />
 
                 <Text
@@ -61,16 +64,19 @@ const Login = () => {
                 >
                   Sign in with Apple
                 </Text>
-              </View>
+              </Animated.View>
             </Pressable>
           </View>
 
-          <View style={{ marginTop: 40, flexDirection: "row", alignItems: "center", gap: 2, marginHorizontal: "auto" }}>
+          <Animated.View
+            entering={FadeInDown.delay(800).duration(1000).springify()}
+            style={{ marginTop: 40, flexDirection: "row", alignItems: "center", gap: 2, marginHorizontal: "auto" }}
+          >
             <Text style={{ fontSize: 14 }}>Don't have an account?</Text>
             <Link href={"/(onboarding)/register"}>
               <Text style={{ fontSize: 14, fontWeight: 600 }}>Sign up</Text>
             </Link>
-          </View>
+          </Animated.View>
         </View>
       </View>
     </Screen>

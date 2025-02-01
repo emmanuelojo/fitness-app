@@ -1,16 +1,17 @@
-import { StyleSheet, Image, View, Text, TouchableOpacity, Pressable, Animated, Dimensions } from "react-native";
+import { StyleSheet, Image, View, Text, Pressable, Animated as RNAnimated, Dimensions } from "react-native";
 import Screen from "@/components/Screen";
 import Spacing from "@/constants/Spacing";
 import FontSize from "@/constants/FontSize";
 import Font from "@/constants/Font";
-import { Link, router } from "expo-router";
-import { useState, useEffect, useRef } from "react";
+import { router } from "expo-router";
+import { useEffect, useRef } from "react";
+import Animated, { FadeInDown, FadeInUp } from "react-native-reanimated";
 
 const WelcomeImage = require("@/assets/images/onboarding/1.png");
 const OverlayImage = require("@/assets/images/onboarding/overlay.png");
 
 const welcome = () => {
-  const animation = useRef(new Animated.Value(0)).current; // Initial value is 0
+  const animation = useRef(new RNAnimated.Value(0)).current; // Initial value is 0
 
   const { height } = Dimensions.get("window");
 
@@ -20,7 +21,7 @@ const welcome = () => {
 
   useEffect(() => {
     // Animate the width from 0 to 100% of the container over 5 seconds
-    Animated.timing(animation, {
+    RNAnimated.timing(animation, {
       toValue: 1, // 1 means 100% width
       duration: 5000, // 5 seconds
       useNativeDriver: false, // Since we are animating width, not transform
@@ -30,7 +31,8 @@ const welcome = () => {
   return (
     <Screen>
       <View style={styles.container}>
-        <Image
+        <Animated.Image
+          entering={FadeInUp.delay(200).duration(1000).springify().damping(3)}
           source={WelcomeImage}
           style={{
             width: "100%",
@@ -55,22 +57,26 @@ const welcome = () => {
           }}
         >
           <View style={styles.ctaTextContainer}>
-            <Text style={styles.title}>Wherever you are health is number one</Text>
-            <Text style={styles.description}>There is no instant way to healthy life</Text>
+            <Animated.Text entering={FadeInUp.delay(200).duration(1000).springify()} style={styles.title}>
+              Wherever you are health is number one
+            </Animated.Text>
+            <Animated.Text entering={FadeInUp.delay(400).duration(1000).springify()} style={styles.description}>
+              There is no instant way to healthy life
+            </Animated.Text>
 
-            <View style={styles.loadingBarWrapper}>
-              <Animated.View
+            <Animated.View entering={FadeInDown.delay(200)} style={styles.loadingBarWrapper}>
+              <RNAnimated.View
                 style={[
                   styles.loadingBar,
                   { width: animation.interpolate({ inputRange: [0, 1], outputRange: ["0%", "100%"] }) },
                 ]}
               />
-            </View>
+            </Animated.View>
           </View>
 
           {/* <Link href="/"> */}
           <Pressable onPress={handleGetStarted}>
-            <View style={styles.button}>
+            <Animated.View entering={FadeInDown.delay(400).springify()} style={styles.button}>
               <Text
                 style={[
                   {
@@ -82,7 +88,7 @@ const welcome = () => {
               >
                 Get started
               </Text>
-            </View>
+            </Animated.View>
           </Pressable>
           {/* </Link> */}
         </View>
@@ -137,6 +143,7 @@ const styles = StyleSheet.create({
     color: "#192126",
     fontWeight: "900",
     fontSize: 24,
+    fontFamily: "Inter_800ExtraBold",
     textTransform: "capitalize",
   },
   description: {
@@ -146,6 +153,7 @@ const styles = StyleSheet.create({
     color: "rgba(25,33,38,0.5)",
     fontWeight: "400",
     fontSize: 15,
+    fontFamily: "Inter_400Regular",
   },
   loadingBarWrapper: {
     marginTop: 40,

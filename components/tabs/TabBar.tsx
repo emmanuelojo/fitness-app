@@ -1,12 +1,14 @@
 import { View, StyleSheet, Dimensions } from "react-native";
 import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import TabBarButton from "./TabBarButton";
+import Animated, { FadeInDown } from "react-native-reanimated";
 
 export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
   const { width } = Dimensions.get("window");
 
   return (
-    <View
+    <Animated.View
+      entering={FadeInDown.delay(200).duration(1000).springify()}
       style={{
         position: "absolute",
         left: 10,
@@ -64,7 +66,7 @@ export function TabBar({ state, descriptors, navigation }: BottomTabBarProps) {
           />
         );
       })}
-    </View>
+    </Animated.View>
   );
 }
 
